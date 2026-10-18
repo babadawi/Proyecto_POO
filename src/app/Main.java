@@ -15,7 +15,7 @@ public class Main {
         Paciente paciente1 = new Paciente("Juan Pérez", "555-1234", "15/05/1990", "juan@mail.com");
         paciente1.registrarPx(); 
         
-        Dentista dentista1 = new Dentista("Dra. Ana López", "CED98765", "ana.lopez@clinica.com");
+        Dentista dentista1 = new Dentista("Dra. Ana López", "CED98765", "ana.lopez@clinica.com", "55-55-55-55-55", "Ortodoncia");
         dentista1.registrarDentista();
 
         Tratamiento limpieza = new Tratamiento("Limpieza Dental", 500.0);
