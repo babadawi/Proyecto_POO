@@ -32,6 +32,6 @@ public class Dentista {
     }
 
     public void registrarDentista() {
-        System.out.println("Dentista registrado exitosamente.");
+        System.out.println("Dentista " + nombre + " registrado exitosamente.");
     }
 }
