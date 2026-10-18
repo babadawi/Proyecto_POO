@@ -32,24 +32,51 @@ public class HistorialClinico {
     public String getNotas() { return notas; }
     public void setNotas(String notas) { this.notas = notas; }
 
+
+
     
     public void agregarAntecedentes(String nuevosAntecedentes) {
+        
         this.antecedentesMedicos += " | " + nuevosAntecedentes;
-        System.out.println("Antecedentes actualizados.");
+        System.out.println("Nuevos antecedentes agregados correctamente.");
     }
 
+    public void editarAntecedentes(String antecedentesActualizados) {
+        
+        this.antecedentesMedicos = antecedentesActualizados;
+        System.out.println("Los antecedentes médicos han sido reemplazados con éxito.");
+    }
+
+    
     public void agregarAlergias(String nuevaAlergia) {
         this.alergias += " | " + nuevaAlergia;
-        System.out.println("Alergia agregada.");
+        System.out.println("Nueva alergia registrada en el historial.");
     }
 
-    public void editarUltimaVisita(String fechaVisita) {
-        this.ultimaVisita = fechaVisita;
-        System.out.println("Última visita actualizada a: " + fechaVisita);
+    public void editarAlergias(String alergiasActualizadas) {
+        this.alergias = alergiasActualizadas;
+        System.out.println("La lista de alergias ha sido corregida.");
     }
+
+    
+    public void agregarUltimaVisita(String fechaVisita) {
+        this.ultimaVisita = fechaVisita;
+        System.out.println("Fecha de última visita registrada: " + fechaVisita);
+    }
+
+    public void editarUltimaVisita(String nuevaFechaVisita) {
+        this.ultimaVisita = nuevaFechaVisita;
+        System.out.println("La fecha de la última visita ha sido corregida a: " + nuevaFechaVisita);
+    }
+    
     
     public void agregarNotas(String nuevaNota) {
         this.notas += " | " + nuevaNota;
-        System.out.println("Notas de evolución actualizadas.");
+        System.out.println("Nueva nota de evolución agregada al paciente.");
+    }
+
+    public void editarNotas(String notasActualizadas) {
+        this.notas = notasActualizadas;
+        System.out.println("Las notas de evolución han sido modificadas.");
     }
 }
