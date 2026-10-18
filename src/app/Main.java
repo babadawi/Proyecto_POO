@@ -5,6 +5,7 @@ import modelo.Dentista;
 import modelo.Tratamiento;
 import modelo.Cita;
 import servicio.GestorClinica;
+import modelo.HistorialClinico;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,6 +31,26 @@ public class Main {
         
         GestorClinica gestor = new GestorClinica();
         gestor.confirmarCitaEnSistema(cita1);
+
+        
+        System.out.println(" 3. Gestionando Historial Clínico ");
+        HistorialClinico historial1 = new HistorialClinico(paciente1, "Ninguno", "Ninguna", "N/A", "Primera visita");
+        
+        
+        historial1.agregarAntecedentes("Hipertensión controlada");
+        historial1.editarAntecedentes("Hipertensión controlada, asma leve");
+        
+        
+        historial1.agregarAlergias("Polen");
+        historial1.editarAlergias("Polen y penicilina");
+        
+        
+        historial1.agregarUltimaVisita("18/10/2026");
+        historial1.editarUltimaVisita("20/10/2026");
+        
+        
+        historial1.agregarNotas("Se recomendó limpieza profunda.");
+        historial1.editarNotas("El paciente aceptó el tratamiento de limpieza profunda.");
         
         System.out.println("\n FIN DE LA DEMOSTRACIÓN ");
     }
