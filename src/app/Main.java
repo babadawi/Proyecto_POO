@@ -1,4 +1,4 @@
-package aplicación;
+package app;
 
 import modelo.Paciente;
 import modelo.Dentista;
