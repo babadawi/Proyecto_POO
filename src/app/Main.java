@@ -33,7 +33,7 @@ public class Main {
         gestor.confirmarCitaEnSistema(cita1);
 
         
-        System.out.println(" 3. Gestionando Historial Clínico ");
+        System.out.println("\n 3. Gestionando Historial Clínico ");
         HistorialClinico historial1 = new HistorialClinico(paciente1, "Ninguno", "Ninguna", "N/A", "Primera visita");
         
         
