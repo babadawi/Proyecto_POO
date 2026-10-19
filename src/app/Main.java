@@ -12,20 +12,20 @@ public class Main {
         System.out.println(" BIENVENIDO AL SISTEMA DE CLÍNICA DENTAL \n");
 
         System.out.println(" 1. Registrando datos ");
-        Paciente paciente1 = new Paciente("Juan Pérez", "555-1234", "15/05/1990", "juan@mail.com");
+        Paciente paciente1 = new Paciente("Rodrigo Huerta", "555-1235", "15/05/1987", "rodhuerta@mail.com");
         paciente1.registrarPx(); 
         
-        Dentista dentista1 = new Dentista("Dra. Ana López", "CED98765", "ana.lopez@clinica.com", "55-55-55-55-55", "Ortodoncia");
+        Dentista dentista1 = new Dentista("Dr. Antonio Hernandez", "CED456675", "antonio.hdz@clinica.com", "55-57-67-89-54", "Endodoncia");
         dentista1.registrarDentista();
 
-        Tratamiento limpieza = new Tratamiento("Limpieza Dental", 500.0);
+        Tratamiento limpieza = new Tratamiento("Endodoncia", 3500.0);
         limpieza.registrarTx();
         
         System.out.println(); 
 
         
         System.out.println(" 2. Agendando y Validando Cita ");
-        Cita cita1 = new Cita("20/10/2026", "10:00 AM", paciente1, dentista1, limpieza);
+        Cita cita1 = new Cita("23/12/2026", "02:00 PM", paciente1, dentista1, limpieza);
         cita1.agendarCita();
         
         
@@ -45,12 +45,12 @@ public class Main {
         historial1.editarAlergias("Polen y penicilina");
         
         
-        historial1.agregarUltimaVisita("18/10/2026");
-        historial1.editarUltimaVisita("20/10/2026");
+        historial1.agregarUltimaVisita("12/08/2026");
+        historial1.editarUltimaVisita("23/12/2026");
         
         
-        historial1.agregarNotas("Se recomendó limpieza profunda.");
-        historial1.editarNotas("El paciente aceptó el tratamiento de limpieza profunda.");
+        historial1.agregarNotas("Se recomendó hacer endodoncia.");
+        historial1.editarNotas("El paciente aceptó el tratamiento de endodoncia.");
         
         System.out.println("\n FIN DE LA DEMOSTRACIÓN ");
     }
