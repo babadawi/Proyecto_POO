@@ -11,10 +11,26 @@ public class Paciente {
         if (nombre == null || nombre.trim().isEmpty() || !nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
             throw new IllegalArgumentException("El nombre del paciente '" + nombre + "' es inválido. Solo debe contener letras.");
         }
+        
+        
+        if (telefono == null || !telefono.trim().matches("^\\d{10}$")) {
+            throw new IllegalArgumentException("El teléfono debe contener exactamente 10 dígitos numéricos.");
+        }
+
+        
+        if (fechaNacimiento == null || !fechaNacimiento.trim().matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\\d{4}$")) {
+            throw new IllegalArgumentException("La fecha de nacimiento debe tener el formato estricto DD/MM/AAAA.");
+        }
+
+        
+        if (correo == null || !correo.trim().contains("@")) {
+            throw new IllegalArgumentException("El correo electrónico del paciente debe contener un '@'.");
+        }
+
         this.nombre = nombre.trim();
-        this.telefono = telefono;
-        this.fechaNacimiento = fechaNacimiento;
-        this.correo = correo;
+        this.telefono = telefono.trim();
+        this.fechaNacimiento = fechaNacimiento.trim();
+        this.correo = correo.trim();
     }
 
     public String getNombre() { return nombre; }
@@ -41,4 +57,3 @@ public class Paciente {
         System.out.println("Paciente " + nombre + " registrado en el sistema con éxito.");
     }
 }
-
