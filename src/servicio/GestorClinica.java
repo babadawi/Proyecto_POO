@@ -26,3 +26,4 @@ public class GestorClinica {
         System.out.println("ÉXITO: La cita del paciente " + cita.getPaciente().getNombre() + " ha sido confirmada en el sistema.");
     }
 }
+
