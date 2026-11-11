@@ -7,13 +7,16 @@ public class Paciente {
     private String correo;
 
     public Paciente(String nombre, String telefono, String fechaNacimiento, String correo) {
-        this.nombre = nombre;
+        
+        if (nombre == null || nombre.trim().isEmpty() || !nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+            throw new IllegalArgumentException("El nombre del paciente '" + nombre + "' es inválido. Solo debe contener letras.");
+        }
+        this.nombre = nombre.trim();
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
         this.correo = correo;
     }
 
-  
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
@@ -26,7 +29,6 @@ public class Paciente {
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
-    
     public void mostrarDatosPx() {
         System.out.println("Paciente: " + nombre + " | Teléfono: " + telefono + " | Correo: " + correo);
     }
@@ -39,3 +41,4 @@ public class Paciente {
         System.out.println("Paciente " + nombre + " registrado en el sistema con éxito.");
     }
 }
+
