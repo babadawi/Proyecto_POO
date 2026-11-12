@@ -1,4 +1,26 @@
-HOLA!:D
+## HOLA!:D
+
+### Este proyecto usa Java 21.
+
+## Estructura del proyecto.
+
+src/
+├── app/
+│   └── Main.java
+├── excepciones/
+│   └── HorarioNoDisponibleException.java
+├── modelo/
+│   ├── Cita.java
+│   ├── Dentista.java
+│   ├── HistorialClinico.java
+│   ├── Paciente.java
+│   ├── Tratamiento.java
+│   ├── TratamientoEspecialidad.java
+│   └── TratamientoGeneral.java
+└── servicio/
+    └── GestorClinica.java
+
+## Instrucciones para compilar.
 
 Para ejecutar el proyecto: 
 1. Presionar el botón verde que dice "Code"
