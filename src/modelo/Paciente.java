@@ -7,7 +7,7 @@ public class Paciente {
     private String correo;
 
     public Paciente(String nombre, String telefono, String fechaNacimiento, String correo) {
-        validarDatosPacient(nombre, telefono, fechaNacimiento, correo);
+        validarDatosPaciente(nombre, telefono, fechaNacimiento, correo);
     }
 
     public void validarDatosPaciente(String nombre, String telefono, String fechaNacimiento, String correo) {
