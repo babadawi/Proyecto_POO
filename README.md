@@ -1,9 +1,10 @@
 ## HOLA!:D
 
-### Este proyecto usa Java 21.
+Este proyecto usa Java 21.
 
 ## Estructura del proyecto.
 
+```text
 src/
 ├── app/
 │   └── Main.java
