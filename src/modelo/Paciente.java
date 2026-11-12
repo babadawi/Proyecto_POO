@@ -7,7 +7,10 @@ public class Paciente {
     private String correo;
 
     public Paciente(String nombre, String telefono, String fechaNacimiento, String correo) {
-        
+        validarDatosPacient(nombre, telefono, fechaNacimiento, correo);
+    }
+
+    public void validarDatosPaciente(String nombre, String telefono, String fechaNacimiento, String correo) {
         if (nombre == null || nombre.trim().isEmpty() || !nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
             throw new IllegalArgumentException("El nombre del paciente '" + nombre + "' es inválido. Solo debe contener letras.");
         }
@@ -57,3 +60,5 @@ public class Paciente {
         System.out.println("Paciente " + nombre + " registrado en el sistema con éxito.");
     }
 }
+
+

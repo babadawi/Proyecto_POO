@@ -9,11 +9,32 @@ public class Cita {
 
     
     public Cita(String fecha, String hora, Paciente paciente, Dentista dentista, Tratamiento tratamiento) {
+        validarDatosCita(fecha, hora, paciente, dentista, tratamiento);
+    }
+
+    public void validarDatosCita(String fecha, String hora, Paciente paciente, Dentista dentista, Tratamiento tratamiento) {
+        if (fecha == null || fecha.trim().isEmpty()) {
+            throw new IllegalArgumentException("La fecha de la cita no puede estar vacía.");
+        }
+        if (hora == null || hora.trim().isEmpty()) {
+            throw new IllegalArgumentException("La hora de la cita no puede estar vacía.");
+        }
+        if (paciente == null) {
+            throw new IllegalArgumentException("El paciente no puede ser nulo.");
+        }
+        if (dentista == null) {
+            throw new IllegalArgumentException("El dentista no puede ser nulo.");
+        }
+        if (tratamiento == null) {
+            throw new IllegalArgumentException("El tratamiento no puede ser nulo.");
+        }
+
         this.fecha = fecha;
         this.hora = hora;
         this.paciente = paciente;
         this.dentista = dentista;
         this.tratamiento = tratamiento;
+
     }
 
     

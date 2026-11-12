@@ -8,7 +8,10 @@ public class Dentista {
     private String password;
 
     public Dentista(String nombre, String cedula, String correo, String id, String password) {
-        
+        validarDatosDentista(nombre, cedula, correo, id, password);
+    }
+
+    public void validarDatosDentista(String nombre, String cedula, String correo, String id, String password) {
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre del dentista no puede estar vacío.");
         }
