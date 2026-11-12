@@ -54,26 +54,28 @@ En el menú principal podemos elegir una de las siguientes opciones:
 
 ### Caso 1
 
-
+Selecciona la opción 4, elige el tipo 1, ingresa el nombre "Limpieza" y un costo de 500. El sistema mostrará correctamente el costo total calculado.
 
 ### Caso 2
 
-
+Selecciona la opción 4, elige el tipo 2, ingresa el nombre "Endodoncia", un costo base de `1000` y un costo extra de `300`. El sistema mostrará el costo total sumando el cargo adicional.
 
 ### Caso 3
 
-
+En el menú principal, teclea una letra en lugar de un número. El sistema mostrará un error de entrada y te permitirá elegir de nuevo sin cerrarse.
 
 ### Caso 4
 
+Selecciona la opción 1 e ingresa un nombre que contenga números (por ejemplo "Ana777"). Se rechazarán los datos indicando el motivo.
 
 ### Caso 5
 
-
+Selecciona la opción 5 e ingresa la hora "02:00 PM", el programa indicará que el horario ya está ocupado.
 
 ### Caso 6
 
-
+Después del paso anterior, vuelve a seleccionar la opción 5 e ingresa una hora disponible, se creará la cita exitosamente.
 
 ### Caso 7
 
+Selecciona la opción 1 y realiza un registro con datos incorrectos, luego repite la opción 1 con datos correctos. En ambos escenarios se imprime el mensaje "Intento finalizado" al terminar.
