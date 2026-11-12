@@ -62,6 +62,9 @@ public class Main {
                         } catch (IllegalArgumentException e) {
                             System.out.println("ERROR DE VALIDACIÓN: " + e.getMessage());
                         }
+                        finally {
+                            System.out.println("Intento finalizado.");
+                        }
                         break;
 
                     case 2:
@@ -99,32 +102,43 @@ public class Main {
                         break;
 
                 case 4:
-                    System.out.println("\n--- COTIZAR TRATAMIENTO ---");
-                    System.out.println("Selecciona el tipo: 1) General 2) Especialidad");
-                    int tipo = scanner.nextInt();
-                    scanner.nextLine();
-                    
-                    System.out.print("Nombre del tratamiento: ");
-                    String nombreTx = scanner.nextLine();
-                    System.out.print("Costo base: ");
-                    double costo = scanner.nextDouble();
-                    scanner.nextLine();
+                        System.out.println("\n--- COTIZAR TRATAMIENTO ---");
+                        try {
+                            System.out.println("Selecciona el tipo: 1) General 2) Especialidad");
+                            int tipo = scanner.nextInt();
+                            scanner.nextLine();
 
-                    Tratamiento tratamientoRef; 
-                    
-                    if (tipo == 1) {
-                        tratamientoRef = new TratamientoGeneral(nombreTx, costo);
-                    } else {
-                        System.out.print("Costo extra de instrumental especializado: ");
-                        double costoExtra = scanner.nextDouble();
+                        if (tipo != 1 && tipo != 2) {
+                            throw new IllegalArgumentException("El tipo debe ser 1 (General) o 2 (Especialidad).");
+                        }
+
+                        System.out.print("Nombre del tratamiento: ");
+                        String nombreTx = scanner.nextLine();
+                        System.out.print("Costo base: ");
+                        double costo = scanner.nextDouble();
                         scanner.nextLine();
-                        tratamientoRef = new TratamientoEspecialidad(nombreTx, costo, costoExtra);
-                    }
-                    
-                    System.out.println("Calculando costo...");
-                    System.out.println("Costo total a cobrar: $" + tratamientoRef.calcularCostoTotal());
-                    break;
 
+                        Tratamiento tratamientoRef;
+
+                        if (tipo == 1) {
+                            tratamientoRef = new TratamientoGeneral(nombreTx, costo);
+                        } else {
+                            System.out.print("Costo extra de instrumental especializado: ");
+                            double costoExtra = scanner.nextDouble();
+                            scanner.nextLine();
+                            tratamientoRef = new TratamientoEspecialidad(nombreTx, costo, costoExtra);
+                        }
+
+                        System.out.println("Calculando costo...");
+                        System.out.println("Costo total a cobrar: $" + tratamientoRef.calcularCostoTotal());
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("ERROR DE ENTRADA: Ingresaste texto donde se esperaba un número.");
+                        scanner.nextLine(); // limpia el dato incorrecto del buffer
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("ERROR DE VALIDACIÓN: " + e.getMessage());
+                    }
+                    break;
                 case 5:
                     System.out.println("\n--- AGENDAR CITA ---");
                     System.out.println("Dentista asignado: " + dentistaActual.getNombre());
