@@ -52,28 +52,28 @@ En el menú principal podemos elegir una de las siguientes opciones:
 
 ## Reproducción de los casos de prueba.
 
-# Caso 1
+### Caso 1
 
 
 
-# Caso 2
+### Caso 2
 
 
 
-# Caso 3
+### Caso 3
 
 
 
-# Caso 4
+### Caso 4
 
 
-# Caso 5
-
-
-
-# Caso 6
+### Caso 5
 
 
 
-# Caso 7
+### Caso 6
+
+
+
+### Caso 7
 
