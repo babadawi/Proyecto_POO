@@ -20,6 +20,7 @@ src/
 │   └── TratamientoGeneral.java
 └── servicio/
     └── GestorClinica.java
+```
 
 ## Instrucciones para compilar.
 
