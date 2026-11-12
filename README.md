@@ -58,7 +58,7 @@ Selecciona la opción 4, elige el tipo 1, ingresa el nombre "Limpieza" y un cost
 
 ### Caso 2
 
-Selecciona la opción 4, elige el tipo 2, ingresa el nombre "Endodoncia", un costo base de `1000` y un costo extra de `300`. El sistema mostrará el costo total sumando el cargo adicional.
+Selecciona la opción 4, elige el tipo 2, ingresa el nombre "Endodoncia", un costo base de 1000 y un costo extra de 300. El sistema mostrará el costo total sumando el cargo adicional.
 
 ### Caso 3
 
