@@ -8,6 +8,12 @@ public class HistorialClinico {
     private String notas;
 
     public HistorialClinico(Paciente paciente, String antecedentesMedicos, String alergias, String ultimaVisita, String notas) {
+        if (paciente == null) {
+            throw new IllegalArgumentException("El historial clínico debe estar asociado a un paciente válido.");
+        }
+        if (ultimaVisita != null && !ultimaVisita.equals("N/A") && !ultimaVisita.trim().matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\\d{4}$")) {
+            throw new IllegalArgumentException("La última visita debe ser 'N/A' o tener el formato DD/MM/AAAA.");
+        }
         this.paciente = paciente;
         this.antecedentesMedicos = antecedentesMedicos;
         this.alergias = alergias;
@@ -31,16 +37,18 @@ public class HistorialClinico {
     public void setNotas(String notas) { this.notas = notas; }
 
     public void agregarAntecedentes(String nuevosAntecedentes) {
-        
         if (nuevosAntecedentes == null || nuevosAntecedentes.trim().isEmpty()) {
             throw new IllegalArgumentException("El campo de antecedentes médicos no puede estar vacío.");
         }
-        this.antecedentesMedicos += " | " + nuevosAntecedentes;
+        this.antecedentesMedicos += " | " + nuevosAntecedentes.trim();
         System.out.println("Nuevos antecedentes agregados correctamente.");
     }
 
     public void editarAntecedentes(String antecedentesActualizados) {
-        this.antecedentesMedicos = antecedentesActualizados;
+        if (antecedentesActualizados == null || antecedentesActualizados.trim().isEmpty()) {
+            throw new IllegalArgumentException("Los antecedentes actualizados no pueden estar vacíos.");
+        }
+        this.antecedentesMedicos = antecedentesActualizados.trim();
         System.out.println("Los antecedentes médicos han sido reemplazados con éxito.");
     }
 
@@ -55,13 +63,15 @@ public class HistorialClinico {
     }
 
     public void agregarUltimaVisita(String fechaVisita) {
-        this.ultimaVisita = fechaVisita;
-        System.out.println("Fecha de última visita registrada: " + fechaVisita);
+        if (fechaVisita == null || !fechaVisita.trim().matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\\d{4}$")) {
+            throw new IllegalArgumentException("La fecha de visita debe tener el formato estricto DD/MM/AAAA.");
+        }
+        this.ultimaVisita = fechaVisita.trim();
+        System.out.println("Fecha de última visita registrada: " + this.ultimaVisita);
     }
 
     public void editarUltimaVisita(String nuevaFechaVisita) {
-        this.ultimaVisita = nuevaFechaVisita;
-        System.out.println("La fecha de la última visita ha sido corregida a: " + nuevaFechaVisita);
+        agregarUltimaVisita(nuevaFechaVisita);
     }
     
     public void agregarNotas(String nuevaNota) {
