@@ -1,29 +1,77 @@
 package servicio;
 
-import modelo.Cita;
-import modelo.Paciente; 
+import modelo.*;
 import excepciones.HorarioNoDisponibleException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GestorClinica {
+    private List<Paciente> pacientes;
+    private List<Dentista> dentistas;
+    private List<HistorialClinico> historiales;
+    private List<Cita> citas;
+
+    public GestorClinica() {
+        this.pacientes = new ArrayList<>();
+        this.dentistas = new ArrayList<>();
+        this.historiales = new ArrayList<>();
+        this.citas = new ArrayList<>();
+
+        // Datos iniciales precargados para facilitar pruebas inmediatas
+        Paciente pxInicial = new Paciente("Rodrigo Huerta", "5551234567", "15/05/1987", "rodhuerta@mail.com");
+        Dentista drInicial = new Dentista("Dr. Antonio Hernandez", "CED456675", "correo@clinica.com", "ID01", "pass123");
+        HistorialClinico histInicial = new HistorialClinico(pxInicial, "Ninguno", "Ninguna", "N/A", "Primera visita");
+
+        this.pacientes.add(pxInicial);
+        this.dentistas.add(drInicial);
+        this.historiales.add(histInicial);
+    }
 
     public void registrarPacienteEnSistema(Paciente paciente) {
-        paciente.registrarPx(); 
+        paciente.registrarPx();
+        this.pacientes.add(paciente);
+        this.historiales.add(new HistorialClinico(paciente, "Ninguno", "Ninguna", "N/A", "Primera visita"));
     }
-    
-    public void agendarCitaValidada(Cita cita) throws HorarioNoDisponibleException {
+
+    public void registrarDentistaEnSistema(Dentista dentista) {
+        dentista.registrarDentista();
+        this.dentistas.add(dentista);
+    }
+
+    public void agendarCitaValidada(Cita nuevaCita) throws HorarioNoDisponibleException {
+        System.out.println("Validando disponibilidad para " + nuevaCita.getDentista().getNombre()
+                + " el " + nuevaCita.getFecha() + " a las " + nuevaCita.getHora() + "...");
+
         
-        if (!cita.getHora().matches("^(0?[1-9]|1[0-2]):[0-5][0-9]\\s?(AM|PM|am|pm)$")) {
-            throw new IllegalArgumentException("La hora '" + cita.getHora() + "' es inválida. Debe tener minutos entre 00 y 59 y formato AM/PM (ejemplo: 01:30 PM).");
+        for (Cita c : citas) {
+            boolean mismoDentista = c.getDentista().getCedula().equalsIgnoreCase(nuevaCita.getDentista().getCedula());
+            boolean mismaFecha = c.getFecha().equals(nuevaCita.getFecha());
+            boolean mismaHora = c.getHora().equalsIgnoreCase(nuevaCita.getHora());
+
+            if (mismoDentista && mismaFecha && mismaHora) {
+                throw new HorarioNoDisponibleException(
+                    "El dentista " + nuevaCita.getDentista().getNombre() + " ya tiene una cita registrada el "
+                    + nuevaCita.getFecha() + " a las " + nuevaCita.getHora() + ". La cita no fue registrada."
+                );
+            }
         }
 
-        System.out.println("Validando disponibilidad en la clínica para las " + cita.getHora() + "...");
-        
-        
-        if (cita.getHora().equalsIgnoreCase("02:00 PM")) {
-            throw new HorarioNoDisponibleException("El horario de las " + cita.getHora() + " ya se encuentra ocupado. La cita no fue registrada.");
-        }
-        
-        System.out.println("ÉXITO: La cita del paciente " + cita.getPaciente().getNombre() + " ha sido confirmada en el sistema.");
+        this.citas.add(nuevaCita);
+        System.out.println("ÉXITO: La cita del paciente " + nuevaCita.getPaciente().getNombre()
+                + " ha sido confirmada (Total de citas activas: " + citas.size() + ").");
     }
+
+    public void cancelarCitaPorIndice(int indice) {
+        if (indice < 0 || indice >= citas.size()) {
+            throw new IllegalArgumentException("El número de cita seleccionado no existe.");
+        }
+        Cita eliminada = citas.remove(indice);
+        eliminada.cancelarCita();
+    }
+
+    public List<Paciente> getPacientes() { return pacientes; }
+    public List<Dentista> getDentistas() { return dentistas; }
+    public List<HistorialClinico> getHistoriales() { return historiales; }
+    public List<Cita> getCitas() { return citas; }
 }
 
